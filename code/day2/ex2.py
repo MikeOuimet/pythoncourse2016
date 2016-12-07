@@ -8,18 +8,19 @@ class Rectangle:
 
 
 class Square(Rectangle):
-	def __init__(self, width = 10, height = 10):
+	def __init__(self, *args, **kwds):
+		Rectangle.__init__(self, *args, **kwds)
 		try: 
-			assert width == height
+			assert self.width == self.height
 		except:
-			height = width
+			self.height = self.width
 			print 'I set height equal to width'
-		self.width = width
-		self.height = height
+		#self.width = width
+		
 
 
-s = Square(11, 10)
+s = Square(width =11, height = 11)
 
-print 'The width is {}, {} , {}'.format(s.width)
+print 'The width is {}'.format(s.width)
 print 'The height is {}'.format(s.height)
 print 'The area is {}'.format(s.get_area())
